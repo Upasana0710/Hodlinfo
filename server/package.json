@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "local": "node src/app.js",
+    "local": "nodemon src/app.js",
     "generate": "(npx prisma generate) & yarn local"
   },
   "dependencies": {
