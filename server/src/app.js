@@ -6,6 +6,8 @@ import cors from 'cors'
 import dotenv from 'dotenv';
 import pkg from 'pg';
 import route from './route.js';
+dotenv.config();
+
 const {Client} = pkg;
 
 const app = express();

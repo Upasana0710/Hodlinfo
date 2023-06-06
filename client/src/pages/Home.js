@@ -5,6 +5,8 @@ import Heading from '../components/Heading';
 import MiddleInfo from '../components/MiddleInfo';
 import styled from 'styled-components';
 import axios from 'axios';
+import { Audio } from 'react-loader-spinner'
+import { CircularProgress } from '@mui/material';
 
 const HomePage = styled.div`
 color: ${({ theme }) => theme.bg};
@@ -43,16 +45,27 @@ align-items: center;
     width: 100%;
   }
 `;
+const Loader = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%;
+width: 100%;
+padding: 40px;
+`
 
 const Home = ({darkMode, setDarkMode}) => {
     const [cardData, setCardData] = useState();
+    const [loading, setLoading] = useState(true); 
 
     const getData = () => {
-        axios.get('https://hodleinfo.onrender.com/check').then((res) => {
+        axios.get('http://localhost:3300/check').then((res) => {
             setCardData(res.data);
+            setLoading(false);
         }).catch((err) => console.log(err))
     }
     useEffect(() => {
+        setLoading(true);
         getData();
     }, [])
     return (
@@ -61,11 +74,17 @@ const Home = ({darkMode, setDarkMode}) => {
             <MiddleInfo />
             <Table>
                 <Heading />
-                <Cards>
-                    {cardData?.map((card, index) => (
-                        <Card card={cardData[index]} />
-                    ))}
-                </Cards>
+                {loading? 
+                <Loader>
+                    <CircularProgress style={{color: "#68c3c4", width: "30px", height: "30px"}}/>
+                </Loader>
+                :
+                    <Cards>
+                        {cardData?.map((card, index) => (
+                            <Card key={index} card={cardData[index]} />
+                        ))}
+                    </Cards>
+                }
             </Table>
             <Button>Add hodlinfo to home screen</Button>
 
