@@ -37,3 +37,21 @@ export const getPostedData = async (req,res) => {
         console.log(error)
     }
 }
+
+export const search = async (req, res) => {
+    const query = req.query.q;
+    try {
+      const items = await prisma.info.findMany({
+        where: {
+          base_unit: {
+            contains: query,
+            mode: 'insensitive',
+          },
+        },
+        take: 40,
+      });
+      res.status(200).json(items);
+    } catch (err) {
+      console.log(err);
+    }
+  };
