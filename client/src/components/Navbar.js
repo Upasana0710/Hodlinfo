@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import {Link} from 'react-router-dom';
 
 const NavContainer = styled.div`
 background-color: ${({ theme }) => theme.bg};
@@ -9,7 +11,7 @@ display: flex;
 flex-direction: row;
 align-items: center;
 padding: 20px 36px;
-justify-content: space-evenly;
+justify-content: space-between;
 @media (max-width: 1100px) {
     display: flex;
     flex-direction: column;
@@ -20,7 +22,7 @@ justify-content: space-evenly;
 
 const Name = styled.div`
 color: ${({ theme }) => theme.primary};
-font-size: 28px;
+font-size: 50px;
 font-weight: 600;
 
 `;
@@ -48,6 +50,24 @@ cursor: pointer;
     font-size: 12px;
   }
 `;
+const TelegramButton = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+gap: 6px;
+background-color: ${({ theme }) => theme.primary};
+color: ${({ theme }) => theme.text_primary};
+border-radius: 12px;
+padding: 0px 6px;
+font-size: 16px;
+cursor: pointer;
+`;
+const Container = styled.div`
+display: flex;
+flex-direction: row;
+gap: 18px;
+`;
 
 const Navbar = ({ darkMode, setDarkMode }) => {
     return (
@@ -56,13 +76,23 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             <ButtonContainer>
                 <Button>INR</Button>
                 <Button>BTC</Button>
-                <Button>BUY BTC</Button>
+                <a href="https://wazirx.com/invite/sp7pvbt6?utm_source=finstreet&utm_medium=affiliate&utm_campaign=regnow-btn" target="_blank" rel="noreferrer">
+                    <Button>BUY BTC</Button>
+                </a>
             </ButtonContainer>
+            <Container>
+            <Link to='/telegram' style={{textDecoration:"none"}}>
+                <TelegramButton>
+                    <TelegramIcon style={{color: "#F2F3F4"}}/>
+                    Connect Telegram
+                </TelegramButton>
+            </Link>
             {darkMode ?
                 <ThemeContainer onClick={()=>setDarkMode(false)}>Light Mode</ThemeContainer>
                 :
                 <ThemeContainer onClick={()=>setDarkMode(true)}>Dark Mode</ThemeContainer>
             }
+            </Container>
         </NavContainer>
     )
 }
