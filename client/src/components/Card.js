@@ -14,6 +14,7 @@ flex-direction: row;
 align-items: center;
 padding: 0px 20px;
 justify-content: space-evenly;
+width: 90%;
 `;
 const Data = styled.div`
 color: ${({ theme }) => theme.text_primary};
