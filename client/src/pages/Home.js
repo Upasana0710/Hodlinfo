@@ -100,7 +100,7 @@ const Home = ({darkMode, setDarkMode}) => {
                 :
                     <Cards>
                         {cardData?.map((card, index) => (
-                            <Card key={index} card={cardData[index]} />
+                            <Card index={index} card={cardData[index]} />
                         ))}
                     </Cards>
                 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import {data} from '../components/data.js';
 
@@ -42,7 +42,7 @@ width: 20px;
 height: 20px;
 border-radius: 100%;
 `;
-const Card = ({ key, card }) => {
+const Card = ({ index, card }) => {
     let savings = parseFloat(card.sell - card.buy).toFixed(2);
     let diff = parseFloat(((card.sell - card.buy) / card.last) * 100).toFixed(2);
     return (
@@ -51,7 +51,7 @@ const Card = ({ key, card }) => {
                 {card.id}
             </Data>
             <Data>
-                <Img src={data[key%5]}/>
+                <Img src={data[index%5]}/>
                 {card.name}
             </Data>
             <Data>
