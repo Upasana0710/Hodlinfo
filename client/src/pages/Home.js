@@ -68,20 +68,27 @@ padding: 40px;
 const Home = ({darkMode, setDarkMode}) => {
     const [cardData, setCardData] = useState();
     const [loading, setLoading] = useState(true); 
+    const [search, setSearch] = useState("BTC");
 
-    const getData = () => {
-        axios.get('http://localhost:3300/check').then((res) => {
+    // const getData = () => {
+    //     axios.get('http://localhost:3300/check').then((res) => {
+    //         setCardData(res.data);
+    //         setLoading(false);
+    //     }).catch((err) => console.log(err))
+    // }
+    const getByFilter=(search)=>{
+        axios.get(`http://localhost:3300/search?q=${search}`).then((res)=>{
             setCardData(res.data);
             setLoading(false);
         }).catch((err) => console.log(err))
     }
     useEffect(() => {
         setLoading(true);
-        getData();
-    }, [])
+        getByFilter(search);
+    }, [search])
     return (
         <HomePage>
-            <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+            <Navbar darkMode={darkMode} setDarkMode={setDarkMode} setSearch={setSearch} />
             <MiddleInfo />
             <Table>
                 <Heading />

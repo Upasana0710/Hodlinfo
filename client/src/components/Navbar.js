@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import {Link} from 'react-router-dom';
@@ -62,6 +62,7 @@ border-radius: 12px;
 padding: 0px 6px;
 font-size: 16px;
 cursor: pointer;
+height: 40px;
 `;
 const Container = styled.div`
 display: flex;
@@ -69,13 +70,29 @@ flex-direction: row;
 gap: 18px;
 `;
 
-const Navbar = ({ darkMode, setDarkMode }) => {
+const Navbar = ({ darkMode, setDarkMode, setSearch }) => {
+
     return (
         <NavContainer>
             <Name>HODLINFO</Name>
             <ButtonContainer>
                 <Button>INR</Button>
-                <Button>BTC</Button>
+                <Button>
+                <select style={{background: "transparent", outline: "none", border: "none", color: "#F2F3F4"}} onChange={(e) => setSearch(e.target.value)}>
+                    <option value='BTC' selected='selected'>BTC</option>
+                    <option value='ETH'>ETH</option>
+                    <option value='USDT'>USDT</option>
+                    <option value='XRP'>XRP</option>
+                    <option value='TRX'>TRX</option>
+                    <option value='DASH'>DASH</option>
+                    <option value='ZEC'>ZEC</option>
+                    <option value='XEM'>XEM</option>
+                    <option value='IOST'>IOST</option>
+                    <option value='WIN'>WIN</option>
+                    <option value='BTT'>BTT</option>
+                    <option value='WRX'>WRX</option>
+                </select>
+                </Button>
                 <a href="https://wazirx.com/invite/sp7pvbt6?utm_source=finstreet&utm_medium=affiliate&utm_campaign=regnow-btn" target="_blank" rel="noreferrer">
                     <Button>BUY BTC</Button>
                 </a>
