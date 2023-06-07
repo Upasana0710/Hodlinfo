@@ -45,13 +45,14 @@ border-radius: 100%;
 const Card = ({ index, card }) => {
     let savings = parseFloat(card.sell - card.buy).toFixed(2);
     let diff = parseFloat(((card.sell - card.buy) / card.last) * 100).toFixed(2);
+
     return (
         <CardContainer>
             <Data style={{width:"100px"}}>
                 {card.id}
             </Data>
             <Data>
-                <Img src={data[index%5]}/>
+                <Img src={data[Math.floor(Math.random()*10)]}/>
                 {card.name}
             </Data>
             <Data>
