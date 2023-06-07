@@ -5,7 +5,6 @@ import Heading from '../components/Heading';
 import MiddleInfo from '../components/MiddleInfo';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Audio } from 'react-loader-spinner'
 import { CircularProgress } from '@mui/material';
 
 const HomePage = styled.div`
@@ -16,6 +15,7 @@ width: 100%;
 height: 100vh;
 align-items: center;
 overflow-y: scroll;
+padding: 0px 20px;
 `;
 const Cards = styled.div`
 display: flex;
@@ -45,6 +45,17 @@ align-items: center;
     width: 100%;
   }
 `;
+const BottomFix = styled.div`
+background: ${({ theme }) => theme.bg};
+display: flex;
+justify-content: center;
+align-items: center;
+height: 60px;
+width: 100%;
+padding: 40px
+position: fixed;
+bottom: 0;
+`
 const Loader = styled.div`
 display: flex;
 justify-content: center;
@@ -86,7 +97,9 @@ const Home = ({darkMode, setDarkMode}) => {
                     </Cards>
                 }
             </Table>
-            <Button>Add hodlinfo to home screen</Button>
+            <BottomFix>
+                <Button>Add hodlinfo to home screen</Button>
+            </BottomFix>
 
         </HomePage>
     )
