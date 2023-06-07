@@ -46,9 +46,8 @@ font-weight: 240;
 }
 `;
 const MiddleValue = styled.div`
-color: ${({ theme }) => theme.text_secondary};
-font-size:40px;
-color:${({ theme }) => theme.text_secondary};
+color: ${({ theme }) => theme.text_primary};
+font-size:68px;
 @media (max-width: 1100px) {
   font-size: 20px;
   text-align: center;
