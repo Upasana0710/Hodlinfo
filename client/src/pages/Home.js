@@ -76,8 +76,9 @@ const Home = ({darkMode, setDarkMode}) => {
     //         setLoading(false);
     //     }).catch((err) => console.log(err))
     // }
+    
     const getByFilter=(search)=>{
-        axios.get(`http://localhost:3300/search?q=${search}`).then((res)=>{
+        axios.get(`https://hodlinfo-backend-2tlz.onrender.com/search?q=${search}`).then((res)=>{
             setCardData(res.data);
             setLoading(false);
         }).catch((err) => console.log(err))
