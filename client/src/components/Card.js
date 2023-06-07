@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-
+import {data} from '../components/data.js';
 
 const CardContainer = styled.div`
 background-color: ${({ theme }) => theme.bgLight};
@@ -22,6 +22,9 @@ font-size: 20px;
 font-weight: 500;
 width: 200px;
 white-space: nowrap;
+display: flex;
+flex-direction: row;
+align-items: center;
 @media (max-width: 1100px) {
     font-size: 14px;
     width: 150px;
@@ -34,13 +37,12 @@ font-weight: 500;
     font-size: 14px;
   }
 `;
-const Card = ({ card }) => {
-    const style = {
-        // Adding media query..
-        '@media (max-width: 1100px)': {
-          width: '100px'
-        },
-    }
+const Img = styled.img`
+width: 20px;
+height: 20px;
+border-radius: 100%;
+`;
+const Card = ({ key, card }) => {
     let savings = parseFloat(card.sell - card.buy).toFixed(2);
     let diff = parseFloat(((card.sell - card.buy) / card.last) * 100).toFixed(2);
     return (
@@ -49,6 +51,7 @@ const Card = ({ card }) => {
                 {card.id}
             </Data>
             <Data>
+                <Img src={data[key%5]}/>
                 {card.name}
             </Data>
             <Data>
