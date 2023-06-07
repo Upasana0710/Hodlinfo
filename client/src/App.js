@@ -3,7 +3,10 @@ import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from './utils/Themes.js'
 import styled from 'styled-components';
 import Home from './pages/Home'
+import Telegram from './pages/Telegram.js';
 import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 
 const Hodlinfo = styled.div`
   display: flex;
@@ -18,9 +21,14 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <Hodlinfo>
-        <Home darkMode={darkMode} setDarkMode={setDarkMode}/>
-      </Hodlinfo>
+      <BrowserRouter>
+        <Hodlinfo>
+          <Routes>
+            <Route path='/' exact element={ <Home darkMode={darkMode} setDarkMode={setDarkMode}/>} />
+            <Route path='/telegram' exact element={ <Telegram darkMode={darkMode} setDarkMode={setDarkMode}/>} />
+          </Routes>
+        </Hodlinfo>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
