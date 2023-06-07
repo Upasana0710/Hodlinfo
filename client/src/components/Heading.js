@@ -7,7 +7,7 @@ flex-direction: row;
 flex: wrap;
 width: 90%;
 padding: 0px 20px;
-justify-content: space-evenly;
+justify-content: space-between;
 margin: 12px 0px 6px 0px;
 `;
 const Topic = styled.div`
